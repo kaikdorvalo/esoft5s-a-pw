@@ -5,207 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página do Pokémon Squirtle</title>
-  <style>
-    /* Reset de estilos para garantir consistência em diferentes navegadores */
-    body,
-    h1,
-    h2,
-    p,
-    ul,
-    ol,
-    li,
-    figure,
-    table,
-    th,
-    td {
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Estilos gerais */
-
-    body {
-      font-family: 'Arial', sans-serif;
-      color: #333;
-      background-color: #f4f4f4;
-    }
-
-    .squirtle-img {
-      width: 94px;
-      height: 94px;
-    }
-
-    main {
-      max-width: 80vw;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    main>section {
-      padding: 20px;
-      width: 100%;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-    }
-
-    main section,
-    main article {
-      color: black;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-    }
-
-    section h1,
-    section h2,
-    section h3 {
-      margin-bottom: 8px;
-    }
-
-    article h1,
-    article h2,
-    article h3 {
-      margin-bottom: 10px;
-    }
-
-    p {
-      margin-bottom: 16px;
-    }
-
-    ul li {
-      list-style-position: inside;
-    }
-
-    /* Header */
-
-    header {
-      background-color: #007bff;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    header h1 {
-      font-size: 24px;
-    }
-
-    /* Lista de navegação */
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      background-color: #343a40;
-      padding: 10px;
-      margin-bottom: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #ffc107;
-    }
-
-    /* Seções */
-
-    #curiosidades li::marker {
-      content: '🔍';
-    }
-
-    #evolucao ul {
-      display: flex;
-      justify-content: space-around;
-      list-style: none;
-    }
-
-    #evolucao figcaption {
-      font-weight: 600;
-      font-size: 20px;
-      text-align: center;
-      margin-top: 16px;
-    }
-
-    article {
-      background-color: #ffc107;
-      color: #fff;
-      width: 100%;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-    }
-
-    /* Links */
-
-    a[target='_blank'] {
-      color: #4592c4;
-      font-weight: bold;
-    }
-
-    a[target='_blank']:hover {
-      opacity: 0.8;
-    }
-
-    .evolucao-ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .evolucao-img {
-      width: 215px;
-      height: 215px;
-    }
-
-    /* Footer */
-
-    footer {
-      background-color: #343a40;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      bottom: 0;
-      box-sizing: border-box;
-    }
-
-    footer a {
-      text-decoration: none;
-      transition: color 0.3s ease-in-out;
-    }
-
-    footer a[href*='#'] {
-      color: white;
-    }
-
-    footer a[href*='mailto'] {
-      color: orangered;
-    }
-
-    footer a[href*='tel'] {
-      color: limegreen;
-    }
-
-    footer a[href]:hover {
-      opacity: 0.8;
-    }
-  </style>
+  <link href="./index.css" rel="stylesheet">
 </head>
 
 <body>
@@ -227,8 +27,13 @@
   <main>
     <section id="info-squirtle" aria-labelledby="info-squirtle-label">
       <h2 id="info-squirtle-label">Informações sobre Squirtle</h2>
-      <img class="squirtle-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
-        alt="Squirtle - Pokémon do tipo Água" />
+      <div class="box-squirtle-imgs">
+        <img class="squirtle-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+          alt="Squirtle - Pokémon do tipo Água" />
+        <img class="squirtle-img new-squirtle-img"
+          src="https://archives.bulbagarden.net/media/upload/thumb/7/79/Squirtle_SSBU.png/200px-Squirtle_SSBU.png"
+          alt="Imagem o Squirtle" />
+      </div>
       <p>
         Squirtle é um Pokémon do tipo Água. É o Pokémon inicial da região de
         Kanto e evolui para Wartortle.
@@ -246,7 +51,7 @@
 
     <section id="curiosidades" aria-labelledby="curiosidades-label">
       <h2 id="curiosidades-label">Curiosidades</h2>
-      <ul>
+      <ul class="curiosidades-lista">
         <li>Squirtle é um dos Pokémon mais populares e adoráveis.</li>
         <li>
           Seu nome deriva das palavras "squirrel" (esquilo) e "turtle"
@@ -327,7 +132,7 @@
   </main>
 
   <footer aria-label="Rodapé">
-    <p aria-label="Copyright">
+    <p class="copyright" aria-label="Copyright">
       &copy; 2024 Página do Pokémon Squirtle. Todos os direitos reservados.
     </p>
     <p><a href="#header">Voltar para o topo</a></p>
