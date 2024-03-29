@@ -40,11 +40,11 @@ body {
 
 
 main {
-    max-width: 80vw;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 0 10vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    animation: 1s fadein;
 }
 
 .curiosidades-lista {
@@ -56,7 +56,6 @@ main {
 
 main>section {
     padding: 20px;
-    width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -123,6 +122,7 @@ nav a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
+    transition: all .5s;
 }
 
 nav a:hover {
@@ -133,6 +133,14 @@ nav a:hover {
 
 #curiosidades li::marker {
     content: '🔍';
+}
+
+.img {
+    transition: all .5s;
+}
+
+.image-scale:hover {
+    scale: 1.1;
 }
 
 #evolucao ul {
@@ -151,7 +159,6 @@ nav a:hover {
 article {
     background-color: #ffc107;
     color: #fff;
-    width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -203,6 +210,7 @@ footer {
 footer a {
     text-decoration: none;
     transition: color 0.3s ease-in-out;
+    transition: all 0.5s;
 }
 
 footer a[href*='#'] {
@@ -223,4 +231,47 @@ footer a[href]:hover {
 
 .copyright {
     text-align: center;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px)
+    }
+}
+
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        text-align: center;
+    }
+
+    .evolucao-ul {
+        flex-direction: column;
+    }
+
+    #evolucao figcaption {
+        font-size: 16px;
+    }
 }
