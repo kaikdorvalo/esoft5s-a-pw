@@ -106,6 +106,9 @@ img {
     width: 200px;
 }
 
+.counter {
+    text-align: center;
+}
 
 footer {
     background-color: #343a40;

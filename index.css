@@ -233,6 +233,10 @@ footer a[href]:hover {
     text-align: center;
 }
 
+.counter {
+    text-align: center;
+}
+
 @keyframes fadein {
     0% {
         opacity: 0;
