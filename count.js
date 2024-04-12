@@ -2,9 +2,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     const local = await JSON.parse(window.localStorage.getItem("visitorsCounter"));
     const footer = document.getElementById('footer');
     const p = document.createElement('p');
-    console.log(local)
     const date = new Date();
-    const formatedDate = `${date.getDay().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}  ${date.getHours()}:${date.getMinutes()}`;
+    const formatedDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}  ${date.getHours()}:${date.getMinutes()}`;
     if (local != null) {
         local.count++;
         local.lastVisit = formatedDate;
