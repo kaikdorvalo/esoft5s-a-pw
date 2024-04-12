@@ -1,17 +1,16 @@
 window.addEventListener("DOMContentLoaded", async () => {
+    const titleH1 = document.getElementById('page-title');
+    const title = document.querySelector('title');
+    const pokeInfo = document.getElementById('poke-info');
+    const imgDiv = document.getElementById('evo-img');
+
     const queryString = window.location.search;
-
     const urlParams = new URLSearchParams(queryString);
-
     const evolution = urlParams.get('evolucao');
 
-    const title = document.getElementById('page-title');
+    titleH1.innerHTML = `Página do ${evolution}`;
     title.innerHTML = `Página do ${evolution}`;
-
-    const pokeInfo = document.getElementById('poke-info');
     pokeInfo.innerHTML = `Informações sobre ${evolution}`
-
-    const imgDiv = document.getElementById('evo-img');
 
     let urls = [];
     let counter = 0;
@@ -19,7 +18,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${evolution}`)
         .then(async (res) => {
             const response = await res.json();
-            console.log(response.sprites);
             const object = Object.values(response.sprites);
             let urlArray = object.filter((el) => typeof el === 'string')
             urls = [urlArray[2], urlArray[3], urlArray[0], urlArray[1]];
