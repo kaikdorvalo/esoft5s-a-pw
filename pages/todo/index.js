@@ -13,10 +13,12 @@ window.addEventListener("DOMContentLoaded", async () => {
         e.preventDefault();
 
         let task = document.getElementById('form-input');
+        let description = document.getElementById('input-text-2')
 
-        if (task.value != "") {
-            taskArray.push(task.value)
+        if (task.value != "" && description.value != "") {
+            taskArray.push({ title: task.value, description: description.value })
             task.value = "";
+            description.value = "";
             window.localStorage.setItem('tasks', JSON.stringify(taskArray));
             console.log(taskArray)
 
@@ -31,9 +33,14 @@ window.addEventListener("DOMContentLoaded", async () => {
         container.innerHTML = ""
 
         array.forEach((el) => {
-            const p = document.createElement('p');
-            p.textContent = el;
-            container.appendChild(p)
+            const title = document.createElement('strong');
+            const description = document.createElement('p');
+            const div = document.createElement('div');
+            title.textContent = el.title;
+            description.textContent = el.description;
+            div.appendChild(title)
+            div.appendChild(description);
+            container.appendChild(div)
         })
     }
 })
