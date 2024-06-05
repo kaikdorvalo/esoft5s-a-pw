@@ -31,45 +31,65 @@ window.addEventListener("DOMContentLoaded", async () => {
             render(taskArray);
         }
     })
-
-
-    function render(array) {
-        const container = document.getElementById('container-tasks');
-        container.innerHTML = ""
-
-        array.forEach((el) => {
-            const boxTask = document.createElement("li");
-            boxTask.classList.add("task-container");
-
-            const divEdit = document.createElement("div");
-
-
-            const buttonEdit = document.createElement("button");
-            buttonEdit.classList.add("btn-edit");
-            buttonEdit.textContent = "✏️";
-            buttonEdit.title = "Editar tarefa"
-
-            addListener(el, buttonEdit);
-
-            divEdit.appendChild(buttonEdit);
-
-            const title = document.createElement('strong');
-            const description = document.createElement('p');
-            const div = document.createElement('div');
-
-
-
-            title.textContent = el.title;
-            description.textContent = el.description;
-            div.appendChild(title)
-            div.appendChild(description);
-
-            boxTask.appendChild(div);
-            boxTask.appendChild(divEdit);
-            container.appendChild(boxTask);
-        })
-    }
 })
+
+function render(array) {
+    const container = document.getElementById('container-tasks');
+    container.innerHTML = ""
+
+    array.forEach((el) => {
+        const boxTask = document.createElement("li");
+        boxTask.classList.add("task-container");
+
+        const divEdit = document.createElement("div");
+        divEdit.classList.add('btn-edit-delete-box')
+
+
+        const buttonEdit = document.createElement("button");
+        buttonEdit.classList.add("btn-edit-delete");
+        buttonEdit.textContent = "✏️";
+        buttonEdit.title = "Editar tarefa"
+
+        const buttonDelete = document.createElement("button");
+        buttonDelete.classList.add("btn-edit-delete");
+        buttonDelete.textContent = "❌";
+        buttonDelete.title = "Deletar tarefa";
+
+
+        addDeleteListener(el, buttonDelete);
+        addListener(el, buttonEdit);
+
+        divEdit.appendChild(buttonEdit);
+        divEdit.appendChild(buttonDelete);
+
+        const title = document.createElement('strong');
+        const description = document.createElement('p');
+        const div = document.createElement('div');
+
+
+
+        title.textContent = el.title;
+        description.textContent = el.description;
+        div.appendChild(title)
+        div.appendChild(description);
+
+        boxTask.appendChild(div);
+        boxTask.appendChild(divEdit);
+        container.appendChild(boxTask);
+    })
+}
+
+function addDeleteListener(el, button) {
+    button.addEventListener('click', async () => {
+        let tasks = await JSON.parse(window.localStorage.getItem('tasks'));
+        const index = tasks.findIndex((item) => item.uuid === el.uuid);
+        if (index > -1) {
+            tasks.splice(index, 1);
+            window.localStorage.setItem('tasks', JSON.stringify(tasks));
+            render(tasks);
+        }
+    })
+}
 
 function addListener(el, button) {
     button.addEventListener('click', async () => {
