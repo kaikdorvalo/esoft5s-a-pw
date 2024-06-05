@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     if (local == null) { window.localStorage.setItem('tasks', JSON.stringify([])) }
 
     taskArray = await JSON.parse(window.localStorage.getItem('tasks'));
-    render(taskArray)
+    render();
 
     const editBtn = document.getElementById('btn-edit')
     const cancelBtn = document.getElementById('btn-cancel')
@@ -28,16 +28,17 @@ window.addEventListener("DOMContentLoaded", async () => {
             window.localStorage.setItem('tasks', JSON.stringify(taskArray));
             console.log(taskArray)
 
-            render(taskArray);
+            render();
         }
     })
 })
 
-function render(array) {
+async function render(array) {
+    let tasks = await JSON.parse(window.localStorage.getItem('tasks'));
     const container = document.getElementById('container-tasks');
     container.innerHTML = ""
 
-    array.forEach((el) => {
+    tasks.forEach((el) => {
         const boxTask = document.createElement("li");
         boxTask.classList.add("task-container");
 
@@ -86,7 +87,7 @@ function addDeleteListener(el, button) {
         if (index > -1) {
             tasks.splice(index, 1);
             window.localStorage.setItem('tasks', JSON.stringify(tasks));
-            render(tasks);
+            location.reload();
         }
     })
 }
